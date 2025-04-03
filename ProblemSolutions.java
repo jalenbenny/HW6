@@ -115,12 +115,13 @@ public class ProblemSolutions {
 
     public static ArrayList<String> showDuplicates(ArrayList<String> input) {
 
-
+        // Create a HashMap to count occurrences of each string
         HashMap<String, Integer> countMap = new HashMap<>();
         for (String s : input) {
             countMap.put(s, countMap.getOrDefault(s, 0) + 1);
         }
 
+        // Add strings that appear more than once to the result list
         ArrayList<String> result = new ArrayList<>();
         for (Map.Entry<String, Integer> entry : countMap.entrySet()) {
             if (entry.getValue() > 1) {
@@ -128,11 +129,10 @@ public class ProblemSolutions {
             }
         }
 
+        // Sort the result in ascending order
         Collections.sort(result);
-        return new ArrayList<>();  // Make sure result is sorted in ascending order
-
+        return result;  // Return the sorted list of duplicates
     }
-
 
     /**
      * Finds pairs in the input array that add up to k.
