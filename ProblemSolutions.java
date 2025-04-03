@@ -66,30 +66,30 @@ public class ProblemSolutions {
     public static int lastBoulder(int[] boulders) {
 
 
-        // Create a priority queue with reverse order comparator (max heap)
+        // priority queue with max heap created
         PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);
 
-        // Add all boulders to the priority queue
+        // add all boulders to priority queue
         for (int boulder : boulders) {
             pq.add(boulder);
         }
 
-        // Smash boulders until there's at most one left
+        // Smash boulders until one left at most
         while (pq.size() > 1) {
             // Get the two heaviest boulders
             int x = pq.poll();
             int y = pq.poll();
 
-            // Apply the smashing rules
+            // apply smashing rules
             if (x != y) {
                 // If x != y, the heavier boulder (x) is destroyed, and the
                 // lighter boulder (y) has new weight x - y
                 pq.add(Math.abs(x - y));
             }
-            // If x == y, both boulders are destroyed (nothing to add back)
+            // if x == y, both boulders are smashede
         }
 
-        // Return the weight of the last remaining boulder, or 0 if none left
+        // return the weight of the last remaining boulder, or 0 if none left
         return pq.isEmpty() ? 0 : pq.peek();
     }
 
@@ -115,13 +115,13 @@ public class ProblemSolutions {
 
     public static ArrayList<String> showDuplicates(ArrayList<String> input) {
 
-        // Create a HashMap to count occurrences of each string
+        // hashmap created to count occurences of a string
         HashMap<String, Integer> countMap = new HashMap<>();
         for (String s : input) {
             countMap.put(s, countMap.getOrDefault(s, 0) + 1);
         }
 
-        // Add strings that appear more than once to the result list
+        // add strings that appear >1 to the result
         ArrayList<String> result = new ArrayList<>();
         for (Map.Entry<String, Integer> entry : countMap.entrySet()) {
             if (entry.getValue() > 1) {
@@ -129,9 +129,9 @@ public class ProblemSolutions {
             }
         }
 
-        // Sort the result in ascending order
+        // sort result in ascending order
         Collections.sort(result);
-        return result;  // Return the sorted list of duplicates
+        return result;  // return the sorted list of duplicates
     }
 
     /**
@@ -166,11 +166,8 @@ public class ProblemSolutions {
 
     public static ArrayList<String> pair(int[] input, int k) {
 
-        //
-        //  YOUR CODE GOES HERE
-        //
 
-        // Use HashSet to track numbers we've seen
+        // use HashSet to track numbers we've already seen
         Set<Integer> seen = new HashSet<>();
         // Use TreeSet to automatically sort our pairs
         Set<String> pairs = new TreeSet<>();
@@ -179,8 +176,8 @@ public class ProblemSolutions {
             int complement = k - num;
 
             if (seen.contains(complement)) {
-                // Found a pair that adds up to k
-                // Ensure the smaller number is first in the pair
+                // found a pair that adds up to k
+                // ensure the smaller number is first in the pair
                 int min = Math.min(num, complement);
                 int max = Math.max(num, complement);
                 pairs.add("(" + min + ", " + max + ")");
@@ -189,7 +186,7 @@ public class ProblemSolutions {
             seen.add(num);
         }
 
-        // Convert TreeSet to ArrayList
+        // tree set is converted to array list
         return new ArrayList<>(pairs);
     }
 }
