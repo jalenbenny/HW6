@@ -155,14 +155,14 @@ class PriorityQueue<E, P> {
 
         Node newNode = new Node(e, priority, tree.size());
 
-        // Add the new node to the tree
+        // add the new node to the tree
         tree.add(newNode);
 
-        // Maintain the min heap property by pulling the node up
+        // maintain the min heap property by pulling the node up
         // as needed (bottom-up heapify)
         pullUp(tree.size() - 1);
 
-        // Return a handle to the newly inserted node
+        // return a handle to the newly inserted node
         return newNode;
     }
 
@@ -180,15 +180,15 @@ class PriorityQueue<E, P> {
     public boolean contains(E e) {
 
 
-        // Iterate through all nodes in the tree
+        // iterate through all nodes in the tree
         for (int i = 0; i < size(); i++) {
-            // Check if the current node's value equals the given element
+            // check if the current node's value equals the given element
             if (tree.get(i).value.equals(e)) {
                 return true;
             }
         }
 
-        // Element not found
+        // element not found
         return false;
     }
 
